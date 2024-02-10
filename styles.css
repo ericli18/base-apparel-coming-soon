@@ -1,0 +1,284 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Josefin Sans", sans-serif;
+  --desaturatedred: hsl(0, 36%, 70%);
+  --softred: hsl(0, 93%, 68%);
+  --darkgrayishred: hsl(0, 6%, 24%);
+  background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  display: grid;
+  /* grid-template-rows: 1fr 3fr 5fr; */
+}
+
+.logo {
+  padding: 2rem;
+  max-width: 10rem;
+}
+
+.text-block {
+  padding: 2rem;
+  order: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.image-block>img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 1.8043rem + 3.4783vi, 4.5rem);
+  line-height: clamp(2.7994rem, 2.4462rem + 1.7658vi, 3.8147rem);
+  font-weight: 600;
+  letter-spacing: 0.6rem;
+  color: var(--darkgrayishred);
+}
+
+.heading-span {
+  color: var(--desaturatedred);
+  font-weight: 300;
+}
+
+.description {
+  color: var(--desaturatedred);
+  font-size: clamp(0.875rem, 0.788rem + 0.4348vi, 1.125rem);
+}
+
+textarea,
+input {
+  outline: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  transition: all 200ms ease-in-out;
+}
+
+button:focus {
+  outline: none;
+  border: none;
+  transition: all 200ms ease-in-out;
+}
+
+.input-container {
+  align-self: stretch;
+  display: flex;
+  position: relative;
+}
+
+.email-input {
+  flex: 1;
+  border-radius: 200px;
+  padding: 0.8rem;
+  padding-left: 1.4rem;
+  border: 0.1rem solid lightgray;
+  background-color: transparent;
+}
+
+.email-input::placeholder {
+  color: lightgray;
+}
+
+.email-submit {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  right: 0;
+  min-height: 100%;
+  min-width: clamp(4.4125rem, 3.7734rem + 3.1957vi, 6.25rem);
+  border-radius: 200px;
+  box-shadow: 0 0.4rem 1rem hsla(0, 36%, 70%, 0.6);
+}
+
+.error-icon{
+  position: absolute;
+  right: clamp(6rem, 5.6522rem + 1.7391vi, 7rem);
+  height: 2rem;
+  top: calc(50% - 1rem);
+  display: none;
+}
+
+.invalid-email {
+  position: absolute;
+  color: var(--softred);
+  font-size: 0.8rem;
+  bottom: -1.6rem;
+  left: 1.4rem;
+  display: none;
+}
+
+.error {
+  display: inline-block;
+}
+
+@media screen and (min-width: 40rem) {
+
+  main {
+    display: flex;
+  }
+
+  .container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo image"
+      "text image";
+    padding-left: clamp(6.75rem, 6.4891rem + 1.3043vi, 7.5rem);
+  }
+
+  .container::before {
+    margin-left: clamp(-7.5rem, -6.4891rem - 1.3043vi, -6.75rem);
+    content: "";
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+    background-image: url("./images/bg-pattern-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .logo {
+    grid-area: logo;
+    max-width: 20rem;
+    padding: 0;
+    align-self: center;
+  }
+
+  .heading {
+    line-height: 5rem;
+    letter-spacing: 1.4rem;
+  }
+
+  .description {
+    line-height: 2.1rem;
+  }
+
+  .text-block {
+    grid-area: text;
+    text-align: left;
+    max-width: 55ch;
+    padding: 4rem 0;
+    padding-right: 3rem;
+  }
+
+  .email-input {
+    padding: 1.2rem;
+    padding-left: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .email-submit {
+    cursor: pointer;
+  }
+
+  .email-submit:hover {
+    opacity: 0.6;
+  }
+
+  .invalid-email {
+    left: 2rem;
+    bottom: -1.8rem;
+  }
+
+  .image-block {
+    display: inline-block;
+    grid-area: image;
+    min-height: 100%;
+  }
+
+  .image-block>img {
+    min-height: 100%;
+  }
+}
