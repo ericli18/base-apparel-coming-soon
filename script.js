@@ -1,18 +1,18 @@
-const form = document.querySelector(".input-container")
+const form = document.querySelector(".email-form")
 const emailInput = document.querySelector(".email-input")
 const errorIcon = document.querySelector(".error-icon")
 const invalidError = document.querySelector(".invalid-email")
 console.log(form)
 
-form.addEventListener("submit", (e) => {
+const checkInput = (e) => {
   e.preventDefault();
-  const input = emailInput.value;
+  const input = form.email.value;
   const matches = input.match(/(.+)\@(.+)\.(.+)/)
   if(matches == null)
   {
-    //handle
     errorIcon.classList.add("error")
-    invalidError.classList.add("error")
+    // invalidError.classList.add("error")
+    invalidError.innerText = "Invalid email"
     console.log("invalid email")
   }
   else
@@ -22,15 +22,27 @@ form.addEventListener("submit", (e) => {
     console.log("host:", host);
     console.log("domain:", domain);
     errorIcon.classList.remove("error")
-    invalidError.classList.remove("error")
+    // invalidError.classList.remove("error")
+    invalidError.innerText = ""
   }
-})
+}
 
-// const input = "user@example.com"; // Replace this with your input string
-
-
-
-// int num_conversions = scanf("%[^@]@%[^.].%[^\n]", username, host, domain);
-// if(num_conversions == 3) {
-//   return INVALID_EMAIL;
+//arrow functions
+// let arrow = (parameter) => 
+// {
+//   //do whatever
 // }
+
+// let test = param => param + 1
+// console.log(test(1))
+
+// function print(function_to_be_called) {  
+//   console.log(function_to_be_called(4));
+// }
+
+// print(test)
+
+// form.addEventListener("submit", checkInput)
+
+// const numbers = [1, 2, 2, 3]
+// console.log(numbers.filter(number => { return number + 1 == 2}))

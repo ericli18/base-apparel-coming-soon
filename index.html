@@ -34,7 +34,7 @@
   <main>
     <div class="container">
 
-      <img class="logo" src="./images/logo.svg" alt="">
+      <img class="logo" src="./images/logo.svg" alt="Base Apparel logo">
       <div class="text-block">
         <h1 class="heading">
           <span class="heading-span">
@@ -46,19 +46,23 @@
           Hello fellow shoppers! We're currently building our new fashion store.
           Add your email below to stay up-to-date with announcements and our launch deals.
         </p>
-        <form class="input-container">
-          <label for="email-input" hidden>email address</label>
-          <input class="email-input" placeholder="Email Address" id="email-input">
-          <button class="email-submit">
-            <img class="submit-arrow" src="./images/icon-arrow.svg">
-          </button>
-          <img class="error-icon" src="./images/icon-error.svg">
-          <label class="invalid-email">Please provide a valid email</label>
+        <form class="email-form">
+          <div class="input-container">
+            <label for="email-input" hidden>email address</label>
+            <input class="email-input" placeholder="Email Address" id="email-input" name="email"
+              aria-describedby="invalid-email">
+            <button class="email-submit" aria-label="submit">
+              <img class="submit-arrow" src="./images/icon-arrow.svg" alt="">
+            </button>
+            <img class="error-icon" src="./images/icon-error.svg" alt="">
+          </div>
+          <span class="invalid-email" id="invalid-email" aria-live="polite"></span>
         </form>
       </div>
       <picture class="image-block">
         <source media="(min-width: 40rem)" srcset="./images/hero-desktop.jpg">
-        <img src="./images/hero-mobile.jpg" alt="picture of model">
+        <img src="./images/hero-mobile.jpg"
+          alt="woman modelling maroon shirt against a dark green background, looking forwards at the user">
       </picture>
     </div>
   </main>
